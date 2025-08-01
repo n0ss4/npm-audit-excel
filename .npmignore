@@ -1,0 +1,13 @@
+dist/
+node_modules/
+.github/
+.vscode/
+coverage/
+*.test.ts
+*.spec.ts
+.eslintrc.json
+.eslintignore
+tsconfig.json
+jest.config.js
+.DS_Store
+*.log

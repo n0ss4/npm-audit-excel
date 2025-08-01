@@ -13,7 +13,7 @@ export async function initI18n(language: string = 'en'): Promise<void> {
   });
 }
 
-export const t = (key: string): string => i18next.t(key);
+export const t = (key: string, options?: Record<string, unknown>): string => i18next.t(key, options);
 export const changeLanguage = async (language: string): Promise<void> => {
   await i18next.changeLanguage(language);
 };
