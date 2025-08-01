@@ -1,0 +1,62 @@
+{
+  "title": "NPM Audit Report",
+  "summary": "Total: {{total}} vulnerabilities | Critical: {{critical}} | High: {{high}} | Moderate: {{moderate}} | Low: {{low}}",
+  "headers": {
+    "priority": "Priority",
+    "score": "Score",
+    "package": "Package",
+    "severity": "Severity",
+    "cvss": "CVSS",
+    "dependencyType": "Dependency Type",
+    "fixAvailable": "Fix Available",
+    "fixVersion": "Fix Version",
+    "majorChange": "Major Change",
+    "vulnerability": "Vulnerability",
+    "cwe": "CWE",
+    "affectedPackages": "Affected Packages",
+    "vulnerableRange": "Vulnerable Range",
+    "fixCommand": "Fix Command",
+    "advisoryUrl": "Advisory URL",
+    "notes": "Notes"
+  },
+  "priority": {
+    "urgent": "URGENT",
+    "high": "HIGH",
+    "medium": "MEDIUM",
+    "low": "LOW"
+  },
+  "severity": {
+    "critical": "CRITICAL",
+    "high": "HIGH",
+    "moderate": "MODERATE",
+    "low": "LOW",
+    "info": "INFO"
+  },
+  "dependencyType": {
+    "direct": "Direct",
+    "indirect": "Indirect"
+  },
+  "boolean": {
+    "yes": "Yes",
+    "no": "No",
+    "available": "✓",
+    "notAvailable": "✗"
+  },
+  "notes": {
+    "majorChangeRequired": "⚠️ Requires major change",
+    "lookForAlternative": "🔍 Look for alternative",
+    "criticalDirect": "🚨 Critical direct dependency"
+  },
+  "commands": {
+    "noFixAvailable": "No fix available"
+  },
+  "cli": {
+    "generatingReport": "Generating report...",
+    "reportGenerated": "Report generated successfully",
+    "error": "Error",
+    "fileNotFound": "File not found",
+    "invalidJson": "Invalid JSON format",
+    "writingFile": "Writing file",
+    "done": "Done!"
+  }
+}

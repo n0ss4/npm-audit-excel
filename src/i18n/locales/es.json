@@ -1,0 +1,62 @@
+{
+  "title": "Reporte de Auditoría NPM",
+  "summary": "Total: {{total}} vulnerabilidades | Críticas: {{critical}} | Altas: {{high}} | Moderadas: {{moderate}} | Bajas: {{low}}",
+  "headers": {
+    "priority": "Prioridad",
+    "score": "Puntuación",
+    "package": "Paquete",
+    "severity": "Severidad",
+    "cvss": "CVSS",
+    "dependencyType": "Tipo de Dependencia",
+    "fixAvailable": "Fix Disponible",
+    "fixVersion": "Versión Fix",
+    "majorChange": "Cambio Mayor",
+    "vulnerability": "Vulnerabilidad",
+    "cwe": "CWE",
+    "affectedPackages": "Paquetes Afectados",
+    "vulnerableRange": "Rango Vulnerable",
+    "fixCommand": "Comando Fix",
+    "advisoryUrl": "URL Advisory",
+    "notes": "Notas"
+  },
+  "priority": {
+    "urgent": "URGENTE",
+    "high": "ALTA",
+    "medium": "MEDIA",
+    "low": "BAJA"
+  },
+  "severity": {
+    "critical": "CRÍTICA",
+    "high": "ALTA",
+    "moderate": "MODERADA",
+    "low": "BAJA",
+    "info": "INFO"
+  },
+  "dependencyType": {
+    "direct": "Directa",
+    "indirect": "Indirecta"
+  },
+  "boolean": {
+    "yes": "Sí",
+    "no": "No",
+    "available": "✓",
+    "notAvailable": "✗"
+  },
+  "notes": {
+    "majorChangeRequired": "⚠️ Requiere cambio mayor",
+    "lookForAlternative": "🔍 Buscar alternativa",
+    "criticalDirect": "🚨 Dependencia directa crítica"
+  },
+  "commands": {
+    "noFixAvailable": "No hay fix disponible"
+  },
+  "cli": {
+    "generatingReport": "Generando reporte...",
+    "reportGenerated": "Reporte generado exitosamente",
+    "error": "Error",
+    "fileNotFound": "Archivo no encontrado",
+    "invalidJson": "Formato JSON inválido",
+    "writingFile": "Escribiendo archivo",
+    "done": "¡Listo!"
+  }
+}
