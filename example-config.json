@@ -1,0 +1,150 @@
+{
+  "$schema": "./config-schema.json",
+  "description": "Sample configuration for npm-audit-excel",
+  "version": "1.0.0",
+
+  "columns": {
+    "visible": {
+      "priority": true,
+      "score": true,
+      "package": true,
+      "severity": true,
+      "cvss": true,
+      "dependencyType": true,
+      "fixAvailable": true,
+      "fixVersion": true,
+      "majorChange": false,
+      "vulnerability": true,
+      "cwe": false,
+      "affectedPackages": false,
+      "vulnerableRange": false,
+      "fixCommand": true,
+      "advisoryUrl": false,
+      "notes": true
+    },
+    "order": [
+      "priority",
+      "package",
+      "severity",
+      "cvss",
+      "dependencyType",
+      "fixAvailable",
+      "fixCommand",
+      "score",
+      "fixVersion",
+      "vulnerability",
+      "notes"
+    ],
+    "widths": {
+      "priority": 15,
+      "score": 8,
+      "package": 40,
+      "severity": 15,
+      "cvss": 10,
+      "dependencyType": 18,
+      "fixAvailable": 18,
+      "fixVersion": 25,
+      "majorChange": 14,
+      "vulnerability": 60,
+      "cwe": 15,
+      "affectedPackages": 18,
+      "vulnerableRange": 25,
+      "fixCommand": 50,
+      "advisoryUrl": 40,
+      "notes": 30
+    },
+    "customHeaders": {
+      "package": "Vulnerable Package",
+      "fixCommand": "How to Fix",
+      "vulnerability": "Security Issue"
+    }
+  },
+
+  "colors": {
+    "priority": {
+      "urgent": "FFCC0000",
+      "high": "FFFF6600",
+      "medium": "FFFFAA00",
+      "low": "FF00AA00"
+    },
+    "severity": {
+      "critical": "FFCC0000",
+      "high": "FFFF4500",
+      "moderate": "FFFF8C00",
+      "low": "FF32CD32"
+    },
+    "text": {
+      "white": "FFFFFFFF",
+      "black": "FF000000"
+    },
+    "background": {
+      "header": "FF2F4F4F",
+      "alternatingRow": "FFF5F5F5"
+    },
+    "cvss": {
+      "highRisk": "FFDC143C",
+      "mediumRisk": "FFFF6347"
+    },
+    "fix": {
+      "available": "FF228B22",
+      "notAvailable": "FFDC143C"
+    },
+    "border": "FFDCDCDC"
+  },
+
+  "layout": {
+    "rowHeights": {
+      "title": 35,
+      "header": 28
+    },
+    "fontSizes": {
+      "title": 18,
+      "summary": 12
+    },
+    "textLimits": {
+      "vulnerabilityTitle": 100
+    },
+    "freezePanes": {
+      "row": 5,
+      "col": 0
+    },
+    "enableAutoFilter": true,
+    "enableAlternatingRows": true
+  },
+
+  "scoring": {
+    "severityWeights": {
+      "critical": 50,
+      "high": 35,
+      "moderate": 25,
+      "low": 10,
+      "info": 5
+    },
+    "bonusPoints": {
+      "directDependency": 20,
+      "fixAvailable": 15,
+      "highCvss": 12,
+      "mediumCvss": 8
+    },
+    "penalties": {
+      "majorVersion": 8,
+      "effectsPerPackage": 3,
+      "maxEffectsPenalty": 15
+    },
+    "thresholds": {
+      "highCvss": 8.5,
+      "mediumCvss": 6.5,
+      "urgentPriority": 60,
+      "highPriority": 40,
+      "mediumPriority": 25
+    }
+  },
+
+  "output": {
+    "includeTitle": true,
+    "includeSummary": true,
+    "includeTimestamp": true,
+    "dateFormat": "toLocaleString",
+    "worksheetName": "Security Audit Report"
+  }
+}

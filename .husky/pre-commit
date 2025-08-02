@@ -1,0 +1,33 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Pre-commit hook
+echo "🔍 Running pre-commit checks..."
+
+# Run lint-staged (Biome.js on staged files)
+echo "📝 Linting and formatting staged files..."
+npx lint-staged
+
+# Type checking
+echo "🔧 Running TypeScript type check..."
+npm run type-check
+
+# Run tests - optimized for speed and reliability
+echo "🧪 Running tests..."
+
+# Get staged files that might have tests
+staged_files=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(ts|js)$' | grep -v node_modules | tr '\n' ' ')
+
+if [ -n "$staged_files" ] && [ "$staged_files" != " " ]; then
+    echo "🔍 Running tests for changed files..."
+    # Try to run related tests, fall back to all tests if it fails
+    npm run test -- --findRelatedTests $staged_files --passWithNoTests --bail --silent || {
+        echo "⚠️  Related tests failed, running all tests..."
+        npm run test -- --passWithNoTests --bail --silent
+    }
+else
+    echo "📝 No staged source files, running all tests..."
+    npm run test -- --passWithNoTests --bail --silent
+fi
+
+echo "✅ Pre-commit checks passed!"

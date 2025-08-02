@@ -1,0 +1,36 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Pre-push hook
+echo "🚀 Running pre-push checks..."
+
+# Get current branch
+branch=$(git rev-parse --abbrev-ref HEAD)
+echo "📋 Current branch: $branch"
+
+# Run full validation suite
+echo "🔍 Running full validation..."
+npm run validate
+
+# Build the project to ensure it compiles
+echo "🔨 Building project..."
+npm run build
+
+# Check if we're pushing to main/master - require clean working directory
+if [ "$branch" = "main" ] || [ "$branch" = "master" ]; then
+    echo "⚠️  Pushing to $branch - running additional checks..."
+    
+    # Ensure no uncommitted changes
+    if [ -n "$(git status --porcelain)" ]; then
+        echo "❌ Error: You have uncommitted changes. Please commit or stash them before pushing to $branch."
+        exit 1
+    fi
+    
+    # Run tests with coverage
+    echo "📊 Running tests with coverage..."
+    npm run test:coverage
+    
+    echo "✅ All checks passed for $branch!"
+else
+    echo "✅ Pre-push checks passed for feature branch!"
+fi
