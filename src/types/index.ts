@@ -81,4 +81,11 @@ export interface ReportOptions {
   language?: string;
   format?: 'excel' | 'json' | 'csv';
   verbose?: boolean;
+  config?: string;
+  preset?: 'minimal' | 'developer' | 'security' | 'highContrast';
+  showColumns?: string;
+  hideColumns?: string;
+  colors?: string;
+  generateConfig?: boolean;
+  listPresets?: boolean;
 }

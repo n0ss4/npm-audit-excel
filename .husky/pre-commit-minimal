@@ -1,0 +1,19 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Minimal pre-commit hook - guaranteed to work
+echo "🔍 Running pre-commit checks..."
+
+# 1. Lint and format staged files
+echo "📝 Linting and formatting..."
+npx lint-staged
+
+# 2. Type check
+echo "🔧 Type checking..."
+npm run type-check
+
+# 3. Run tests (simple approach)
+echo "🧪 Running tests..."
+npm test
+
+echo "✅ Pre-commit checks completed!"

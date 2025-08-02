@@ -1,0 +1,19 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Pre-commit hook
+echo "🔍 Running pre-commit checks..."
+
+# Run lint-staged (ESLint + Prettier on staged files)
+echo "📝 Linting and formatting staged files..."
+npx lint-staged
+
+# Type checking
+echo "🔧 Running TypeScript type check..."
+npm run type-check
+
+# Run tests - simplified approach
+echo "🧪 Running tests..."
+npm run test -- --passWithNoTests --bail
+
+echo "✅ Pre-commit checks passed!"

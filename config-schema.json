@@ -1,0 +1,243 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "npm-audit-excel Configuration",
+  "description": "Configuration schema for npm-audit-excel report generation",
+  "type": "object",
+  "properties": {
+    "columns": {
+      "type": "object",
+      "properties": {
+        "visible": {
+          "type": "object",
+          "properties": {
+            "priority": { "type": "boolean" },
+            "score": { "type": "boolean" },
+            "package": { "type": "boolean" },
+            "severity": { "type": "boolean" },
+            "cvss": { "type": "boolean" },
+            "dependencyType": { "type": "boolean" },
+            "fixAvailable": { "type": "boolean" },
+            "fixVersion": { "type": "boolean" },
+            "majorChange": { "type": "boolean" },
+            "vulnerability": { "type": "boolean" },
+            "cwe": { "type": "boolean" },
+            "affectedPackages": { "type": "boolean" },
+            "vulnerableRange": { "type": "boolean" },
+            "fixCommand": { "type": "boolean" },
+            "advisoryUrl": { "type": "boolean" },
+            "notes": { "type": "boolean" }
+          },
+          "additionalProperties": false
+        },
+        "order": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "priority",
+              "score",
+              "package",
+              "severity",
+              "cvss",
+              "dependencyType",
+              "fixAvailable",
+              "fixVersion",
+              "majorChange",
+              "vulnerability",
+              "cwe",
+              "affectedPackages",
+              "vulnerableRange",
+              "fixCommand",
+              "advisoryUrl",
+              "notes"
+            ]
+          }
+        },
+        "widths": {
+          "type": "object",
+          "patternProperties": {
+            "^(priority|score|package|severity|cvss|dependencyType|fixAvailable|fixVersion|majorChange|vulnerability|cwe|affectedPackages|vulnerableRange|fixCommand|advisoryUrl|notes)$": {
+              "type": "number",
+              "minimum": 1
+            }
+          },
+          "additionalProperties": false
+        },
+        "customHeaders": {
+          "type": "object",
+          "patternProperties": {
+            "^(priority|score|package|severity|cvss|dependencyType|fixAvailable|fixVersion|majorChange|vulnerability|cwe|affectedPackages|vulnerableRange|fixCommand|advisoryUrl|notes)$": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "colors": {
+      "type": "object",
+      "properties": {
+        "priority": {
+          "type": "object",
+          "properties": {
+            "urgent": { "$ref": "#/definitions/argbColor" },
+            "high": { "$ref": "#/definitions/argbColor" },
+            "medium": { "$ref": "#/definitions/argbColor" },
+            "low": { "$ref": "#/definitions/argbColor" }
+          },
+          "additionalProperties": false
+        },
+        "severity": {
+          "type": "object",
+          "properties": {
+            "critical": { "$ref": "#/definitions/argbColor" },
+            "high": { "$ref": "#/definitions/argbColor" },
+            "moderate": { "$ref": "#/definitions/argbColor" },
+            "low": { "$ref": "#/definitions/argbColor" }
+          },
+          "additionalProperties": false
+        },
+        "text": {
+          "type": "object",
+          "properties": {
+            "white": { "$ref": "#/definitions/argbColor" },
+            "black": { "$ref": "#/definitions/argbColor" }
+          },
+          "additionalProperties": false
+        },
+        "background": {
+          "type": "object",
+          "properties": {
+            "header": { "$ref": "#/definitions/argbColor" },
+            "alternatingRow": { "$ref": "#/definitions/argbColor" }
+          },
+          "additionalProperties": false
+        },
+        "cvss": {
+          "type": "object",
+          "properties": {
+            "highRisk": { "$ref": "#/definitions/argbColor" },
+            "mediumRisk": { "$ref": "#/definitions/argbColor" }
+          },
+          "additionalProperties": false
+        },
+        "fix": {
+          "type": "object",
+          "properties": {
+            "available": { "$ref": "#/definitions/argbColor" },
+            "notAvailable": { "$ref": "#/definitions/argbColor" }
+          },
+          "additionalProperties": false
+        },
+        "border": { "$ref": "#/definitions/argbColor" }
+      },
+      "additionalProperties": false
+    },
+    "layout": {
+      "type": "object",
+      "properties": {
+        "rowHeights": {
+          "type": "object",
+          "properties": {
+            "title": { "type": "number", "minimum": 1 },
+            "header": { "type": "number", "minimum": 1 }
+          },
+          "additionalProperties": false
+        },
+        "fontSizes": {
+          "type": "object",
+          "properties": {
+            "title": { "type": "number", "minimum": 1 },
+            "summary": { "type": "number", "minimum": 1 }
+          },
+          "additionalProperties": false
+        },
+        "textLimits": {
+          "type": "object",
+          "properties": {
+            "vulnerabilityTitle": { "type": "number", "minimum": 1 }
+          },
+          "additionalProperties": false
+        },
+        "freezePanes": {
+          "type": "object",
+          "properties": {
+            "row": { "type": "number", "minimum": 0 },
+            "col": { "type": "number", "minimum": 0 }
+          },
+          "additionalProperties": false
+        },
+        "enableAutoFilter": { "type": "boolean" },
+        "enableAlternatingRows": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+    "scoring": {
+      "type": "object",
+      "properties": {
+        "severityWeights": {
+          "type": "object",
+          "properties": {
+            "critical": { "type": "number", "minimum": 0 },
+            "high": { "type": "number", "minimum": 0 },
+            "moderate": { "type": "number", "minimum": 0 },
+            "low": { "type": "number", "minimum": 0 },
+            "info": { "type": "number", "minimum": 0 }
+          },
+          "additionalProperties": false
+        },
+        "bonusPoints": {
+          "type": "object",
+          "properties": {
+            "directDependency": { "type": "number", "minimum": 0 },
+            "fixAvailable": { "type": "number", "minimum": 0 },
+            "highCvss": { "type": "number", "minimum": 0 },
+            "mediumCvss": { "type": "number", "minimum": 0 }
+          },
+          "additionalProperties": false
+        },
+        "penalties": {
+          "type": "object",
+          "properties": {
+            "majorVersion": { "type": "number", "minimum": 0 },
+            "effectsPerPackage": { "type": "number", "minimum": 0 },
+            "maxEffectsPenalty": { "type": "number", "minimum": 0 }
+          },
+          "additionalProperties": false
+        },
+        "thresholds": {
+          "type": "object",
+          "properties": {
+            "highCvss": { "type": "number", "minimum": 0, "maximum": 10 },
+            "mediumCvss": { "type": "number", "minimum": 0, "maximum": 10 },
+            "urgentPriority": { "type": "number", "minimum": 0 },
+            "highPriority": { "type": "number", "minimum": 0 },
+            "mediumPriority": { "type": "number", "minimum": 0 }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "output": {
+      "type": "object",
+      "properties": {
+        "includeTitle": { "type": "boolean" },
+        "includeSummary": { "type": "boolean" },
+        "includeTimestamp": { "type": "boolean" },
+        "dateFormat": { "type": "string" },
+        "worksheetName": { "type": "string" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "definitions": {
+    "argbColor": {
+      "type": "string",
+      "pattern": "^FF[0-9A-Fa-f]{6}$",
+      "description": "ARGB color format (e.g., 'FFFF0000' for red)"
+    }
+  }
+}
